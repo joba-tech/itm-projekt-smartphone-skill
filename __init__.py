@@ -31,7 +31,7 @@ class ItmProjektSmartphone(MycroftSkill):
                     self.stop
 
         elif selection == "Samsung":
-                        if self.availableSamsungs > 0:
+            if self.availableSamsungs > 0:
                 self.availableSamsungs =- 1
                 self.speak_dialog('samsung.costs')
             else:
@@ -43,7 +43,7 @@ class ItmProjektSmartphone(MycroftSkill):
                     self.stop
         
         elif selection == "Nokia":
-                        if self.availableNokias > 0:
+            if self.availableNokias > 0:
                 self.availableNokias =- 1
                 self.speak_dialog('nokia.phone.costs')
             else:

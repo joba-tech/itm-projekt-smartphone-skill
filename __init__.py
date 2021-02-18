@@ -12,10 +12,10 @@ class ItmProjektSmartphone(MycroftSkill):
     @intent_handler('want.to.buy.a.phone.intent')
     def handle_want_to_buy_a_phone_intent(self):
         self.speak_dialog('welcome')
-        self.selection = self.ask_selection(self.phones, 'which.phone.do.you.want')
+        selection = self.ask_selection(self.phones, 'which.phone.do.you.want')
         self.speak_dialog('confirm.phone.choice', {'phone': selection})
 
-        if selection == "iphone":
+        if utterances == "iphone":
             self.speak_dialog('iphone.costs')
         elif selection == "samsung":
             self.speak_dialog('samsung.costs')

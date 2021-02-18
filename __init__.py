@@ -31,10 +31,28 @@ class ItmProjektSmartphone(MycroftSkill):
                     self.stop
 
         elif selection == "Samsung":
-            self.speak_dialog('samsung.costs')
+                        if self.availableSamsungs > 0:
+                self.availableSamsungs =- 1
+                self.speak_dialog('samsung.costs')
+            else:
+                wants_alternativphone = self.ask_yesno('not.available')
+                if wants_alternativphone == 'yes':
+                    self.handle_want_to_buy_a_phone_intent()
+                elif wants_alternativphone == 'no':
+                    self.speak_dialog('goodbye')
+                    self.stop
         
         elif selection == "Nokia":
-            self.speak_dialog('nokia.costs')
+                        if self.availableNokias > 0:
+                self.availableNokias =- 1
+                self.speak_dialog('nokia.phone.costs')
+            else:
+                wants_alternativphone = self.ask_yesno('not.available')
+                if wants_alternativphone == 'yes':
+                    self.handle_want_to_buy_a_phone_intent()
+                elif wants_alternativphone == 'no':
+                    self.speak_dialog('goodbye')
+                    self.stop
         
         else:
             self.speak_dialog('error')

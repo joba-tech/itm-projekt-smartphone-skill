@@ -5,9 +5,9 @@ class ItmProjektSmartphone(MycroftSkill):
     def __init__(self):
         MycroftSkill.__init__(self)
 
-    @intent_file_handler('smartphone.projekt.itm.intent')
+    @intent_file_handler('initial.intent')
     def handle_smartphone_projekt_itm(self, message):
-        self.speak_dialog('smartphone.projekt.itm')
+        self.speak_dialog('initial')
 
 
 def create_skill():

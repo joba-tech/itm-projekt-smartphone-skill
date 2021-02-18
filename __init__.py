@@ -14,20 +14,20 @@ class ItmProjektSmartphone(MycroftSkill):
         self.speak_dialog('welcome')
         selection = self.ask_selection(self.phones, 'which.phone.do.you.want')
         self.speak_dialog('confirm.phone.choice', {'phone': selection})
+        self.converse
 
-        def converse(self, utterances, lang):
-            if utterances and self.voc_match(utterances[0], 'iphone'):
-                self.speak_dialog('iphone.costs')
-                return True
-            if utterances and self.voc_match(utterances[0], 'samsung'):
-                self.speak_dialog('samsung.costs')
-                return True
-            if utterances and self.voc_match(utterances[0], 'nokia'):
-                self.speak_dialog('nokia.costs')
-                return True
-            else:
-                self.speak_dialog('error')
-                return False
+        if selection and self.voc_match(selection, 'iphone'):
+            self.speak_dialog('iphone.costs')
+            return True
+        if selection and self.voc_match(selection, 'samsung'):
+            self.speak_dialog('samsung.costs')
+            return True
+        if selection and self.voc_match(selection, 'nokia'):
+            self.speak_dialog('nokia.costs')
+            return True
+        else:
+            self.speak_dialog('error')
+            return False
 
 def create_skill():
     return ItmProjektSmartphone()

@@ -14,7 +14,6 @@ class ItmProjektSmartphone(MycroftSkill):
         self.speak_dialog('welcome')
         selection = self.ask_selection(self.phones, 'which.phone.do.you.want')
         self.speak_dialog('confirm.phone.choice', {'phone': selection})
-        self.converse
 
         if selection and self.voc_match(selection, 'iphone'):
             self.speak_dialog('iphone.costs')

@@ -1,13 +1,16 @@
-from mycroft import MycroftSkill, intent_handler
+from mycroft import MycroftSkill, intent_file_handler
 
 
 class ItmProjektSmartphone(MycroftSkill):
+    def __init__(self):
+        MycroftSkill.__init__(self)
+        self.phones = ['iPhone', 'Samsung', 'Nokia']
 
     @intent_handler('initial.intent')
     def handle_set_phone_wish(self):
-        phone_wish = self.get_response('which.phone.do.you.want')
-        self.speak_dialog('confirm.phone.wish'. {'phone': phone_wish })
-
+        self.speak_dialog('which.phone.do.you.want')
+        selection = self.ask_selection(self.phones, 'smartphones')
+        self.speak_dialog('you.bought', {'phone': selection})
 
 def create_skill():
     return ItmProjektSmartphone()

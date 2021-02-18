@@ -15,11 +15,11 @@ class ItmProjektSmartphone(MycroftSkill):
         selection = self.ask_selection(self.phones, 'which.phone.do.you.want')
         self.speak_dialog('confirm.phone.choice', {'phone': selection})
 
-        if selection == "iphone":
+        if selection == 'iphone':
             self.speak_dialog('iphone.costs')
-        elif selection == "samsung":
+        elif selection == 'samsung':
             self.speak_dialog('samsung.costs')
-        elif selection == "nokia":
+        elif selection == 'nokia':
             self.speak_dialog('nokia.costs')
         else:
             self.speak_dialog('error')

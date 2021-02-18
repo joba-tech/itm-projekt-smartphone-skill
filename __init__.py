@@ -8,18 +8,19 @@ class ItmProjektSmartphone(MycroftSkill):
         self.colorsIphone = ['Black', 'White']
         self.colorsSamsung = ['Blue', 'White']
         self.colorsNokia = ['Yellow', 'Blue']
+        self.smartphoneSelection
 
     @intent_handler('want.to.buy.a.phone.intent')
     def handle_want_to_buy_a_phone_intent(self):
         self.speak_dialog('welcome')
-        selection = self.ask_selection(self.phones, 'which.phone.do.you.want')
+        smartphoneSelection = self.ask_selection(self.phones, 'which.phone.do.you.want')
         self.speak_dialog('confirm.phone.choice', {'phone': selection})
 
-        if selection == "iphone":
+        if smartphoneSelection == "iphone":
             self.speak_dialog('iphone.costs')
-        elif selection == "samsung":
+        elif smartphoneSelection == "samsung":
             self.speak_dialog('samsung.costs')
-        elif selection == "nokia":
+        elif smartphoneSelection == "nokia":
             self.speak_dialog('nokia.costs')
         else:
             self.speak_dialog('error')

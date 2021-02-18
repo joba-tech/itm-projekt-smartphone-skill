@@ -27,6 +27,7 @@ class ItmProjektSmartphone(MycroftSkill):
                 if wants_alternativphone == 'yes':
                     self.handle_want_to_buy_a_phone_intent()
                 elif wants_alternativphone == 'no':
+                    self.speak_dialog('goodbye')
                     self.stop
 
         elif selection == "Samsung":

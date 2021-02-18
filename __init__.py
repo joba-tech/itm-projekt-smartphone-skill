@@ -45,7 +45,7 @@ class ItmProjektSmartphone(MycroftSkill):
         elif selection == "Nokia":
             if self.availableNokias > 0:
                 self.availableNokias =- 1
-                self.speak_dialog('nokia.phone.costs')
+                self.speak_dialog('nokia.costs')
             else:
                 wants_alternativphone = self.ask_yesno('not.available')
                 if wants_alternativphone == 'yes':

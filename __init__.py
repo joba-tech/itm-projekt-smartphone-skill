@@ -17,6 +17,10 @@ class ItmProjektSmartphone(MycroftSkill):
 
         if selection == "iPhone":
             self.speak_dialog('iphone.costs')
+        if selection == "Samsung":
+            self.speak_dialog('samsung.costs')
+        if selection == "Nokia":
+            self.speak_dialog('nokia.costs')
         else:
             self.speak_dialog('error')
 

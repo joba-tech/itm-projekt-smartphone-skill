@@ -16,13 +16,13 @@ class ItmProjektSmartphone(MycroftSkill):
         self.speak_dialog('confirm.phone.choice', {'phone': selection})
 
         def iphone():
-            self.speak("Choose a color for your iPhone")
+            return "Choose a color for your iPhone"
 
         def samsung():
-            self.speak("Choose a color for your Samsung")
+            return "Choose a color for your Samsung"
 
         def nokia():
-            self.speak("Chosse a color for your Nokia")
+            return "Chosse a color for your Nokia"
 
         def numbers_to_choice(numbers):
             switcher = {
@@ -30,6 +30,8 @@ class ItmProjektSmartphone(MycroftSkill):
                 2: samsung,
                 3: nokia
             }
+        func = switcher.get(numbers, lambda: "Error")
+
 
 def create_skill():
     return ItmProjektSmartphone()

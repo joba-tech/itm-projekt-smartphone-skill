@@ -6,8 +6,8 @@ class ItmProjektSmartphone(MycroftSkill):
         MycroftSkill.__init__(self)
 
     @intent_file_handler('first.step.intent')
-    def handle_first_step_intent(self, message):
-        self.speak_dialog("welcome")
+    def handle_first_step(self, message):
+        self.speak_dialog('welcome')
 
 def create_skill():
     return ItmProjektSmartphone()

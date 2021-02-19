@@ -60,10 +60,5 @@ class ItmProjektSmartphone(MycroftSkill):
     def stop(self):
         pass
 
-    @intent_handler('how.much.is.the.fish')
-    def handle_want_to_buy_a_phone_intent(self):
-        self.speak_dialog('welcome')
-
 def create_skill():
     return ItmProjektSmartphone()
-    

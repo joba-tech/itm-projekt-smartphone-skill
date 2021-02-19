@@ -57,6 +57,7 @@ class ItmProjektSmartphone(MycroftSkill):
         else:
             self.speak_dialog('error')
 
+
     def stop(self):
         pass
 

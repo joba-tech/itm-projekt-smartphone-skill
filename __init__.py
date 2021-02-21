@@ -8,7 +8,7 @@ class ItmProjektSmartphone(MycroftSkill):
         self.availableIphones = 1
         self.availableSamsungs = 2
         self.availableNokias = 3
-        self.cart = [["iPhones",0], ["Samsungs",0], ["Nokias",0]]
+        self.cart = [["iPhones",0], ["Samsungs",1], ["Nokias",2]]
 
     @intent_handler('want.to.buy.a.phone.intent')
     def handle_want_to_buy_a_phone_intent(self):

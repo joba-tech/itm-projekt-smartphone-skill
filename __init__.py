@@ -75,8 +75,11 @@ class ItmProjektSmartphone(MycroftSkill):
         
         else:
             self.speak_dialog('error')
+            self.stop
 
-    @intent_handler('ask.for.price.intent')
+        self.stop
+
+    @intent_handler('how.much.is.the.fish.intent')
     def handle_ask_for_price_intent(self, message):
         self.speak_dialog('welcome')
         selected_phone = message.data.get('phone')
@@ -90,6 +93,8 @@ class ItmProjektSmartphone(MycroftSkill):
                 self.speak_dialog('nokia.costs')
             else:
                 self.speak_dialog('error')
+                self.stop
+        self.stop
 
     @intent_handler('shopping.cart.intent')
     def handle_shopping_cart_intent(self, message):

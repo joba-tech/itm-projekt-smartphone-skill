@@ -91,10 +91,9 @@ class ItmProjektSmartphone(MycroftSkill):
             else:
                 self.speak_dialog('error')
 
-     @intent_handler('shopping.cart.intent')
-    def ask_for_price_intent(self, message):
+    @intent_handler('shopping.cart.intent')
+    def shopping_cart(self, message):
         self.speak_dialog('welcome')
-        selected_phone = message.data.get('phone')
 
 def create_skill():
     return ItmProjektSmartphone()

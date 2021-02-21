@@ -8,7 +8,7 @@ class ItmProjektSmartphone(MycroftSkill):
         self.availableIphones = 1
         self.availableSamsungs = 2
         self.availableNokias = 3
-        self.cart = [[0],[0],[0]]
+        self.cart = [0, 0, 0]
 
     @intent_handler('want.to.buy.a.phone.intent')
     def handle_want_to_buy_a_phone_intent(self):
@@ -20,6 +20,12 @@ class ItmProjektSmartphone(MycroftSkill):
             if self.availableIphones > 0:
                 self.availableIphones =- 1
                 self.speak_dialog('iphone.costs')
+                add_to_cart = self.ask_yesno('add.to.cart.question')
+                if wants_alternativphone == 'yes':
+                    cart[0] += 1
+                elif wants_alternativphone == 'no':
+                    self.handle_want_to_buy_a_phone_intent()
+                    self.stop
             else:
                 wants_alternativphone = self.ask_yesno('not.available')
                 if wants_alternativphone == 'yes':
@@ -32,6 +38,12 @@ class ItmProjektSmartphone(MycroftSkill):
             if self.availableSamsungs > 0:
                 self.availableSamsungs =- 1
                 self.speak_dialog('samsung.costs')
+                add_to_cart = self.ask_yesno('add.to.cart.question')
+                if wants_alternativphone == 'yes':
+                    cart[1] += 1
+                elif wants_alternativphone == 'no':
+                    self.handle_want_to_buy_a_phone_intent()
+                    self.stop
             else:
                 wants_alternativphone = self.ask_yesno('not.available')
                 if wants_alternativphone == 'yes':
@@ -44,6 +56,12 @@ class ItmProjektSmartphone(MycroftSkill):
             if self.availableNokias > 0:
                 self.availableNokias =- 1
                 self.speak_dialog('nokia.costs')
+                add_to_cart = self.ask_yesno('add.to.cart.question')
+                if wants_alternativphone == 'yes':
+                    cart[2] += 1
+                elif wants_alternativphone == 'no':
+                    self.handle_want_to_buy_a_phone_intent()
+                    self.stop
             else:
                 wants_alternativphone = self.ask_yesno('not.available')
                 if wants_alternativphone == 'yes':

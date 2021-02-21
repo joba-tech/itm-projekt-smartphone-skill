@@ -5,9 +5,6 @@ class ItmProjektSmartphone(MycroftSkill):
     def __init__(self):
         MycroftSkill.__init__(self)
         self.phones = ['iPhone', 'Samsung', 'Nokia']
-        self.colorsIphone = ['Black', 'White']
-        self.colorsSamsung = ['Blue', 'White']
-        self.colorsNokia = ['Yellow', 'Blue']
         self.availableIphones = 1
         self.availableSamsungs = 2
         self.availableNokias = 3
@@ -60,6 +57,24 @@ class ItmProjektSmartphone(MycroftSkill):
 
     def stop(self):
         pass
+
+    @intent_handler('ask.for.price.intent')
+    def ask_for_price_intent(self, message):
+        self.speak_dialog('welcome')
+        selected_phone = message.data.get('phone')
+        if selected_phone is not None:
+            if selected_phone == 'iPhone':
+                self.speak_dialog('iphone.costs')
+            elif selected_phone == 'Samsung':
+                self.speak_dialog('samsung.costs')
+            elif selected_phone == 'Nokia':
+                self.speak_dialog('nokia.costs')
+            else:
+                self.speak_dialog('error')
+    
+    def stop(self):
+        pass
+
 
 def create_skill():
     return ItmProjektSmartphone()

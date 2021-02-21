@@ -21,14 +21,15 @@ class ItmProjektSmartphone(MycroftSkill):
                 self.availableIphones =- 1
                 self.speak_dialog('iphone.costs')
                 add_to_cart = self.ask_yesno('add.to.cart.question')
-                if wants_alternativphone == 'yes':
-                    cart[0] += 1
-                elif wants_alternativphone == 'no':
+                if add_to_cart == 'yes':
+                    self.cart[0] += 1
+                    self.speak_dialog('cart.entries', {'phone': "iPhone"})
+                elif add_to_cart == 'no':
                     self.handle_want_to_buy_a_phone_intent()
                     self.stop
             else:
                 wants_alternativphone = self.ask_yesno('not.available')
-                if wants_alternativphone == 'yes':
+                if add_to_cart == 'yes':
                     self.handle_want_to_buy_a_phone_intent()
                 elif wants_alternativphone == 'no':
                     self.speak_dialog('goodbye')
@@ -39,9 +40,10 @@ class ItmProjektSmartphone(MycroftSkill):
                 self.availableSamsungs =- 1
                 self.speak_dialog('samsung.costs')
                 add_to_cart = self.ask_yesno('add.to.cart.question')
-                if wants_alternativphone == 'yes':
-                    cart[1] += 1
-                elif wants_alternativphone == 'no':
+                if add_to_cart == 'yes':
+                    self.cart[1] += 1
+                    self.speak_dialog('cart.entries', {'phone': "Samsung"})
+                elif add_to_cart == 'no':
                     self.handle_want_to_buy_a_phone_intent()
                     self.stop
             else:
@@ -57,9 +59,10 @@ class ItmProjektSmartphone(MycroftSkill):
                 self.availableNokias =- 1
                 self.speak_dialog('nokia.costs')
                 add_to_cart = self.ask_yesno('add.to.cart.question')
-                if wants_alternativphone == 'yes':
-                    cart[2] += 1
-                elif wants_alternativphone == 'no':
+                if add_to_cart == 'yes':
+                    self.cart[2] += 1
+                    self.speak_dialog('cart.entries', {'phone': "Nokia"})
+                elif add_to_cart == 'no':
                     self.handle_want_to_buy_a_phone_intent()
                     self.stop
             else:

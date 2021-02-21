@@ -8,7 +8,7 @@ class ItmProjektSmartphone(MycroftSkill):
         self.availableIphones = 1
         self.availableSamsungs = 2
         self.availableNokias = 3
-        self.cart = [0, 0, 0]
+        self.cart = [["iPhones",0], ["Samsungs",0], ["Nokias",0]]
 
     @intent_handler('want.to.buy.a.phone.intent')
     def handle_want_to_buy_a_phone_intent(self):
@@ -22,9 +22,8 @@ class ItmProjektSmartphone(MycroftSkill):
                 self.speak_dialog('iphone.costs')
                 add_to_cart = self.ask_yesno('add.to.cart.question')
                 if add_to_cart == 'yes':
-                    self.cart[0] += 1
-                    cart_entries_iphone = self.cart[0]
-                    self.speak_dialog('cart.entries', {'phones': "iPhones", 'number': cart_entries_iphone})
+                    self.cart[0][1] += 1
+                    self.speak_dialog('cart.entries', {'phones': cart[0][0], 'number': cart[0][1]})
                 elif add_to_cart == 'no':
                     self.handle_want_to_buy_a_phone_intent()
                     self.stop
@@ -42,9 +41,8 @@ class ItmProjektSmartphone(MycroftSkill):
                 self.speak_dialog('samsung.costs')
                 add_to_cart = self.ask_yesno('add.to.cart.question')
                 if add_to_cart == 'yes':
-                    self.cart[1] += 1
-                    cart_entries_samsung = self.cart[1]
-                    self.speak_dialog('cart.entries', {'phones': "Samsungs", 'number': cart_entries_samsung})
+                    self.cart[1][1] += 1
+                    self.speak_dialog('cart.entries', {'phones': cart[1][0], 'number': cart[1][1]})
                 elif add_to_cart == 'no':
                     self.handle_want_to_buy_a_phone_intent()
                     self.stop
@@ -62,9 +60,8 @@ class ItmProjektSmartphone(MycroftSkill):
                 self.speak_dialog('nokia.costs')
                 add_to_cart = self.ask_yesno('add.to.cart.question')
                 if add_to_cart == 'yes':
-                    self.cart[2] += 1
-                    cart_entries_nokia = self.cart[2]
-                    self.speak_dialog('cart.entries', {'phones': "Nokias", 'number': cart_entries_nokia})
+                    self.cart[2][1] += 1
+                    self.speak_dialog('cart.entries', {'phones': [2][0], 'number': cart[2][1]})
                 elif add_to_cart == 'no':
                     self.handle_want_to_buy_a_phone_intent()
                     self.stop
@@ -94,6 +91,10 @@ class ItmProjektSmartphone(MycroftSkill):
             else:
                 self.speak_dialog('error')
 
+     @intent_handler('shopping.cart.intent')
+    def ask_for_price_intent(self, message):
+        self.speak_dialog('welcome')
+        selected_phone = message.data.get('phone')
 
 def create_skill():
     return ItmProjektSmartphone()

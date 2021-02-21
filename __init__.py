@@ -62,12 +62,13 @@ class ItmProjektSmartphone(MycroftSkill):
     def ask_for_price_intent(self, message):
         self.speak_dialog('welcome')
         selected_phone = message.data.get('phone')
+        self.speak_dialog('confirm.phone.choice', {'phone': selection})
         if selected_phone is not None:
-            if selected_phone == 'iPhone':
+            if selected_phone == "iPhone":
                 self.speak_dialog('iphone.costs')
-            elif selected_phone == 'Samsung':
+            elif selected_phone == "Samsung":
                 self.speak_dialog('samsung.costs')
-            elif selected_phone == 'Nokia':
+            elif selected_phone == "Nokia":
                 self.speak_dialog('nokia.costs')
             else:
                 self.speak_dialog('error')

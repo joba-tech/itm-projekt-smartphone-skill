@@ -24,9 +24,9 @@ class ItmProjektSmartphone(MycroftSkill):
                 if add_to_cart == 'yes':
                     self.cart[0][1] += 1
                     self.speak_dialog('cart.entries', {'phones': self.cart[0][0], 'number': self.cart[0][1]})
+                    self.stop
                 elif add_to_cart == 'no':
                     self.handle_want_to_buy_a_phone_intent()
-                    self.stop
             else:
                 wants_alternativphone = self.ask_yesno('not.available')
                 if add_to_cart == 'yes':
@@ -43,9 +43,9 @@ class ItmProjektSmartphone(MycroftSkill):
                 if add_to_cart == 'yes':
                     self.cart[1][1] += 1
                     self.speak_dialog('cart.entries', {'phones': self.cart[1][0], 'number': self.cart[1][1]})
+                    self.stop
                 elif add_to_cart == 'no':
                     self.handle_want_to_buy_a_phone_intent()
-                    self.stop
             else:
                 wants_alternativphone = self.ask_yesno('not.available')
                 if wants_alternativphone == 'yes':
@@ -62,9 +62,9 @@ class ItmProjektSmartphone(MycroftSkill):
                 if add_to_cart == 'yes':
                     self.cart[2][1] += 1
                     self.speak_dialog('cart.entries', {'phones': self.cart[2][0], 'number': self.cart[2][1]})
+                    self.stop                
                 elif add_to_cart == 'no':
                     self.handle_want_to_buy_a_phone_intent()
-                    self.stop
             else:
                 wants_alternativphone = self.ask_yesno('not.available')
                 if wants_alternativphone == 'yes':
@@ -100,6 +100,7 @@ class ItmProjektSmartphone(MycroftSkill):
     def handle_shopping_cart_intent(self, message):
         self.speak_dialog('welcome')
         self.speak_dialog('shopping.cart.status', {'phone1_name': self.cart[0][0], 'phone1_number': self.cart[0][1], 'phone2_name': self.cart[1][0], 'phone2_number': self.cart[1][1], 'phone3_name': self.cart[2][0], 'phone3_number': self.cart[2][1]})
+        self.stop
 
     @intent_handler('delete.shopping.cart.intent')
     def handle_delete_shopping_cart_intent(self):

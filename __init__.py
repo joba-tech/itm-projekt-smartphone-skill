@@ -13,7 +13,7 @@ class ItmProjektSmartphone(MycroftSkill):
     def handle_want_to_buy_a_phone_intent(self):
         self.speak_dialog('welcome')
         selection = self.ask_selection(self.phones, 'which.phone.do.you.want')
-        self.speak_dialog('confirm.phone.choice', {'phone': selection})
+        #debug self.speak_dialog('confirm.phone.choice', {'phone': selection})
 
         if selection == "iPhone":
             if self.availableIphones > 0:
@@ -54,15 +54,11 @@ class ItmProjektSmartphone(MycroftSkill):
         else:
             self.speak_dialog('error')
 
-
-    def stop(self):
-        pass
-
     @intent_handler('ask.for.price.intent')
     def ask_for_price_intent(self, message):
         self.speak_dialog('welcome')
         selected_phone = message.data.get('phone')
-        self.speak_dialog('confirm.phone.choice', {'phone': selected_phone})
+        #debug self.speak_dialog('confirm.phone.choice', {'phone': selected_phone})
         if selected_phone is not None:
             if selected_phone == "iphone":
                 self.speak_dialog('iphone.costs')
@@ -72,9 +68,6 @@ class ItmProjektSmartphone(MycroftSkill):
                 self.speak_dialog('nokia.costs')
             else:
                 self.speak_dialog('error')
-    
-    def stop(self):
-        pass
 
 
 def create_skill():

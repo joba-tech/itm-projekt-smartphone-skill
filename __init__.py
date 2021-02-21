@@ -77,7 +77,7 @@ class ItmProjektSmartphone(MycroftSkill):
             self.speak_dialog('error')
 
     @intent_handler('ask.for.price.intent')
-    def ask_for_price_intent(self, message):
+    def handle_ask_for_price_intent(self, message):
         self.speak_dialog('welcome')
         selected_phone = message.data.get('phone')
         #debug self.speak_dialog('confirm.phone.choice', {'phone': selected_phone})
@@ -92,12 +92,12 @@ class ItmProjektSmartphone(MycroftSkill):
                 self.speak_dialog('error')
 
     @intent_handler('shopping.cart.intent')
-    def shopping_cart_intent(self, message):
+    def handle_shopping_cart_intent(self, message):
         self.speak_dialog('welcome')
         self.speak_dialog('shopping.cart.status', {'phone1_name': self.cart[0][0], 'phone1_number': self.cart[0][1], 'phone2_name': self.cart[1][0], 'phone2_number': self.cart[1][1], 'phone3_name': self.cart[2][0], 'phone3_number': self.cart[2][1]})
 
     @intent_handler('delete.shopping.cart.intent')
-    def delete_shopping_cart_intent(self):
+    def handle_delete_shopping_cart_intent(self):
         self.speak_dialog('welcome')
         delete_shopping_cart = self.ask_yesno('are.you.sure.cart')
         if delete_shopping_cart == 'yes':
@@ -106,6 +106,11 @@ class ItmProjektSmartphone(MycroftSkill):
         else:
             self.speak_dialog('goodbye')
             self.stop
+
+    @intent_handler('hello.there.intent')
+    def handle_hello_there_intent(self):
+        self.speak_dialog('general.kenobi')
+        self.stop
 
 def create_skill():
     return ItmProjektSmartphone()

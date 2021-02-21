@@ -102,6 +102,7 @@ class ItmProjektSmartphone(MycroftSkill):
         delete_shopping_cart = self.ask_yesno('are.you.sure.cart')
         if delete_shopping_cart == 'yes':
             self.cart = [["iPhones",0], ["Samsungs",0], ["Nokias",0]]
+            self.speak_dialog('confirm.deltion')
         else:
             self.speak_dialog('goodbye')
             self.stop

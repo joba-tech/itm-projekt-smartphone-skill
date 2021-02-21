@@ -24,7 +24,7 @@ class ItmProjektSmartphone(MycroftSkill):
                 if add_to_cart == 'yes':
                     self.cart[0] += 1
                     #cart_entries_iphone = self.cart[0]
-                    self.speak_dialog('cart.entries', {'phones': "iPhones"}, {'number': "cart_entries_iphone"})
+                    self.speak_dialog('cart.entries', {'phones': "iPhones", 'number': "cart_entries_iphone"})
                 elif add_to_cart == 'no':
                     self.handle_want_to_buy_a_phone_intent()
                     self.stop

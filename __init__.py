@@ -64,11 +64,11 @@ class ItmProjektSmartphone(MycroftSkill):
         selected_phone = message.data.get('phone')
         self.speak_dialog('confirm.phone.choice', {'phone': selected_phone})
         if selected_phone is not None:
-            if selected_phone == "iPhone":
+            if selected_phone == "iphone":
                 self.speak_dialog('iphone.costs')
-            elif selected_phone == "Samsung":
+            elif selected_phone == "samsung":
                 self.speak_dialog('samsung.costs')
-            elif selected_phone == "Nokia":
+            elif selected_phone == "nokia":
                 self.speak_dialog('nokia.costs')
             else:
                 self.speak_dialog('error')

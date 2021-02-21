@@ -92,9 +92,19 @@ class ItmProjektSmartphone(MycroftSkill):
                 self.speak_dialog('error')
 
     @intent_handler('shopping.cart.intent')
-    def shopping_cart(self, message):
+    def shopping_cart_intent(self, message):
         self.speak_dialog('welcome')
-        self.speak_dialog('shopping.cart.status', {'phone1_name': self.cart[0][0], 'phone1_number': self.cart[0][0], 'phone2_name': self.cart[1][0], 'phone2_number': self.cart[1][1], 'phone3_name': self.cart[2][0], 'phone3_number': self.cart[2][1]})
+        self.speak_dialog('shopping.cart.status', {'phone1_name': self.cart[0][0], 'phone1_number': self.cart[0][1], 'phone2_name': self.cart[1][0], 'phone2_number': self.cart[1][1], 'phone3_name': self.cart[2][0], 'phone3_number': self.cart[2][1]})
+
+    @intent_handler('delete.shopping.cart')
+    def delete_shopping_cart_intent(self):
+        self.speak_dialog('welcome')
+        delete_shopping_cart = self.ask_yesno('are.you.sure.cart')
+        if delete_shopping_cart == 'yes':
+            self.cart = [["iPhones",0], ["Samsungs",0], ["Nokias",0]]
+        else:
+            self.speak_dialog('goodbye')
+            self.stop
 
 def create_skill():
     return ItmProjektSmartphone()

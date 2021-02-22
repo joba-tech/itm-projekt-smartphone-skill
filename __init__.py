@@ -140,7 +140,9 @@ class ItmProjektSmartphone(MycroftSkill):
 
     @intent_handler('checkout.intent')
     def handle_chechout_intent(self):
-        self.speak_dialog('shopping.cart.total')
+        self.speak_dialog('shopping.cart.status', {'phone1_name': self.cart[0][0], 'phone1_number': self.cart[0][1], 'phone2_name': self.cart[1][0], 'phone2_number': self.cart[1][1], 'phone3_name': self.cart[2][0], 'phone3_number': self.cart[2][1]})
+        cart_total = (self.cart[0][1] * self.cart[0][2]) + (self.cart[1][1] * self.cart[1][2]) + (self.cart[2][1] * self.cart[2][2])
+        self.speak_dialog('shopping.cart.total', {'total': cart_total})
         self.stop
 
 

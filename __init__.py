@@ -24,9 +24,9 @@ class ItmProjektSmartphone(MycroftSkill):
                 if add_to_cart == 'yes':
                     self.cart[0][1] += 1
                     self.speak_dialog('cart.entries', {'phones': self.cart[0][0], 'number': self.cart[0][1]})
-                    checkout_question = self.ask_yesno('chechout.question')
+                    checkout_question = self.ask_yesno('checkout.question')
                     if checkout_question == 'yes':
-                        self.handle_chechout_intent()
+                        self.handle_checkout_intent()
                     else:
                         self.speak_dialog('goodbye')
                         
@@ -48,9 +48,9 @@ class ItmProjektSmartphone(MycroftSkill):
                 if add_to_cart == 'yes':
                     self.cart[1][1] += 1
                     self.speak_dialog('cart.entries', {'phones': self.cart[1][0], 'number': self.cart[1][1]})
-                    checkout_question = self.ask_yesno('chechout.question')
+                    checkout_question = self.ask_yesno('checkout.question')
                     if checkout_question == 'yes':
-                        self.handle_chechout_intent()
+                        self.handle_checkout_intent()
                     else:
                         self.speak_dialog('goodbye')
                         
@@ -72,9 +72,9 @@ class ItmProjektSmartphone(MycroftSkill):
                 if add_to_cart == 'yes':
                     self.cart[2][1] += 1
                     self.speak_dialog('cart.entries', {'phones': self.cart[2][0], 'number': self.cart[2][1]})
-                    checkout_question = self.ask_yesno('chechout.question')
+                    checkout_question = self.ask_yesno('checkout.question')
                     if checkout_question == 'yes':
-                        self.handle_chechout_intent()
+                        self.handle_checkout_intent()
                     else:
                         self.speak_dialog('goodbye')
                                        
@@ -115,9 +115,9 @@ class ItmProjektSmartphone(MycroftSkill):
     def handle_shopping_cart_intent(self):
         self.speak_dialog('welcome')
         self.speak_dialog('shopping.cart.status', {'phone1_name': self.cart[0][0], 'phone1_number': self.cart[0][1], 'phone2_name': self.cart[1][0], 'phone2_number': self.cart[1][1], 'phone3_name': self.cart[2][0], 'phone3_number': self.cart[2][1]})
-        checkout_question = self.ask_yesno('chechout.question')
+        checkout_question = self.ask_yesno('checkout.question')
         if checkout_question == 'yes':
-            self.handle_chechout_intent()
+            self.handle_checkout_intent()
         else:
             self.speak_dialog('goodbye')
             
@@ -139,7 +139,7 @@ class ItmProjektSmartphone(MycroftSkill):
         
 
     @intent_handler('checkout.intent')
-    def handle_chechout_intent(self):
+    def handle_checkout_intent(self):
         self.speak_dialog('shopping.cart.status', {'phone1_name': self.cart[0][0], 'phone1_number': self.cart[0][1], 'phone2_name': self.cart[1][0], 'phone2_number': self.cart[1][1], 'phone3_name': self.cart[2][0], 'phone3_number': self.cart[2][1]})
         cart_total = (self.cart[0][1] * self.cart[0][2]) + (self.cart[1][1] * self.cart[1][2]) + (self.cart[2][1] * self.cart[2][2])
         self.speak_dialog('shopping.cart.total', {'total': cart_total})
@@ -153,7 +153,7 @@ class ItmProjektSmartphone(MycroftSkill):
             self.speak_dialog('goodbye')
             self.cart = [["iPhones",0,999], ["Samsungs",0,699], ["Nokias",0,1]]
         else:
-            self.handle_chechout_intent()
+            self.handle_checkout_intent()
         
 
 

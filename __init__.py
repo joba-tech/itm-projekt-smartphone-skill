@@ -140,7 +140,7 @@ class ItmProjektSmartphone(MycroftSkill):
 
     @intent_handler('checkout.intent')
     def handle_chechout_intent(self):
-        shopping_cart_total = sum(cart)
+        shopping_cart_total = sum(self.cart)
         self.speak_dialog(shopping_cart_total)
 
 

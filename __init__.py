@@ -29,7 +29,7 @@ class ItmProjektSmartphone(MycroftSkill):
                         self.handle_chechout_intent()
                     else:
                         self.speak_dialog('goodbye')
-                        self.stop()
+                        
                 elif add_to_cart == 'no':
                     self.handle_want_to_buy_a_phone_intent()
             else:
@@ -38,7 +38,7 @@ class ItmProjektSmartphone(MycroftSkill):
                     self.handle_want_to_buy_a_phone_intent()
                 elif wants_alternativphone == 'no':
                     self.speak_dialog('goodbye')
-                    self.stop()
+                    
 
         elif selection == "Samsung":
             if self.availableSamsungs > 0:
@@ -53,7 +53,7 @@ class ItmProjektSmartphone(MycroftSkill):
                         self.handle_chechout_intent()
                     else:
                         self.speak_dialog('goodbye')
-                        self.stop()
+                        
                 elif add_to_cart == 'no':
                     self.handle_want_to_buy_a_phone_intent()
             else:
@@ -62,7 +62,7 @@ class ItmProjektSmartphone(MycroftSkill):
                     self.handle_want_to_buy_a_phone_intent()
                 elif wants_alternativphone == 'no':
                     self.speak_dialog('goodbye')
-                    self.stop()
+                    
         
         elif selection == "Nokia":
             if self.availableNokias > 0:
@@ -77,7 +77,7 @@ class ItmProjektSmartphone(MycroftSkill):
                         self.handle_chechout_intent()
                     else:
                         self.speak_dialog('goodbye')
-                        self.stop()               
+                                       
                 elif add_to_cart == 'no':
                     self.handle_want_to_buy_a_phone_intent()
             else:
@@ -86,13 +86,13 @@ class ItmProjektSmartphone(MycroftSkill):
                     self.handle_want_to_buy_a_phone_intent()
                 elif wants_alternativphone == 'no':
                     self.speak_dialog('goodbye')
-                    self.stop()
+                    
         
         else:
             self.speak_dialog('error')
-            self.stop()
+            
 
-        self.stop()
+        
 
     @intent_handler('how.much.is.the.fish.intent')
     def handle_ask_for_price_intent(self, message):
@@ -108,8 +108,8 @@ class ItmProjektSmartphone(MycroftSkill):
                 self.speak_dialog('nokia.costs', {'costs': self.cart[2][2]})
             else:
                 self.speak_dialog('error')
-                self.stop()
-        self.stop()
+                
+        
 
     @intent_handler('shopping.cart.intent')
     def handle_shopping_cart_intent(self):
@@ -120,7 +120,7 @@ class ItmProjektSmartphone(MycroftSkill):
             self.handle_chechout_intent()
         else:
             self.speak_dialog('goodbye')
-            self.stop()
+            
 
     @intent_handler('delete.shopping.cart.intent')
     def handle_delete_shopping_cart_intent(self):
@@ -131,30 +131,22 @@ class ItmProjektSmartphone(MycroftSkill):
             self.speak_dialog('confirm.deltion')
         else:
             self.speak_dialog('goodbye')
-            self.stop()
+            
 
     @intent_handler('hello.there.intent')
     def handle_hello_there_intent(self):
         self.speak_dialog('general.kenobi')
-        self.stop()
+        
 
     @intent_handler('checkout.intent')
     def handle_chechout_intent(self):
         self.speak_dialog('shopping.cart.status', {'phone1_name': self.cart[0][0], 'phone1_number': self.cart[0][1], 'phone2_name': self.cart[1][0], 'phone2_number': self.cart[1][1], 'phone3_name': self.cart[2][0], 'phone3_number': self.cart[2][1]})
         cart_total = (self.cart[0][1] * self.cart[0][2]) + (self.cart[1][1] * self.cart[1][2]) + (self.cart[2][1] * self.cart[2][2])
         self.speak_dialog('shopping.cart.total', {'total': cart_total})
-        home_street = self.get_response('what.is.your.street.address')
-        if home_street == 'stop':
-            self.stop()
+        home_street = self.get_response('what.is.your.street.address')            
         home_number = self.get_response('what.is.your.house.number')
-        if home_number == 'stop':
-            self.stop()
         home_zip = self.get_response('what.is.your.zip.code')
-        if home_zip == 'stop':
-            self.stop()
         home_town = self.get_response('what.is.your.hometown')
-        if home_town == 'stop':
-            self.stop()
         address_check = self.ask_yesno('address.check', {'street': home_street, 'number': home_number, 'zip': home_zip, 'town': home_town})
         if address_check == 'yes':
             self.speak_dialog('thank.you.for.purchase')
@@ -162,10 +154,7 @@ class ItmProjektSmartphone(MycroftSkill):
             self.cart = [["iPhones",0,999], ["Samsungs",0,699], ["Nokias",0,1]]
         else:
             self.handle_chechout_intent()
-        self.stop()
-
-    def stop(self):
-        self.stop_process()
+        
 
 
 def create_skill():

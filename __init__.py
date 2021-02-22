@@ -3,7 +3,7 @@ from mycroft import MycroftSkill, intent_handler
 
 class ItmProjektSmartphone(MycroftSkill):
     def __init__(self):
-        MycroftSkill.__init__(self)
+        MycroftSkill__init__(self)
         self.phones = ['iPhone', 'Samsung', 'Nokia']
         self.availableIphones = 1
         self.availableSamsungs = 2

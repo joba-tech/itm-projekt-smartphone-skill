@@ -14,8 +14,6 @@ class ItmProjektSmartphone(MycroftSkill):
     def handle_want_to_buy_a_phone_intent(self):
         self.speak_dialog('welcome')
         selection = self.ask_selection(self.phones, 'which.phone.do.you.want')
-        #debug self.speak_dialog('confirm.phone.choice', {'phone': selection})
-
         if selection == "iPhone":
             if self.availableIphones > 0:
                 self.availableIphones =- 1
@@ -28,8 +26,7 @@ class ItmProjektSmartphone(MycroftSkill):
                     if checkout_question == 'yes':
                         self.handle_checkout_intent()
                     else:
-                        self.speak_dialog('goodbye')
-                        
+                        self.speak_dialog('goodbye')    
                 elif add_to_cart == 'no':
                     self.handle_want_to_buy_a_phone_intent()
             else:
@@ -38,8 +35,6 @@ class ItmProjektSmartphone(MycroftSkill):
                     self.handle_want_to_buy_a_phone_intent()
                 elif wants_alternativphone == 'no':
                     self.speak_dialog('goodbye')
-                    
-
         elif selection == "Samsung":
             if self.availableSamsungs > 0:
                 self.availableSamsungs =- 1
@@ -52,8 +47,7 @@ class ItmProjektSmartphone(MycroftSkill):
                     if checkout_question == 'yes':
                         self.handle_checkout_intent()
                     else:
-                        self.speak_dialog('goodbye')
-                        
+                        self.speak_dialog('goodbye')   
                 elif add_to_cart == 'no':
                     self.handle_want_to_buy_a_phone_intent()
             else:
@@ -62,8 +56,6 @@ class ItmProjektSmartphone(MycroftSkill):
                     self.handle_want_to_buy_a_phone_intent()
                 elif wants_alternativphone == 'no':
                     self.speak_dialog('goodbye')
-                    
-        
         elif selection == "Nokia":
             if self.availableNokias > 0:
                 self.availableNokias =- 1
@@ -76,8 +68,7 @@ class ItmProjektSmartphone(MycroftSkill):
                     if checkout_question == 'yes':
                         self.handle_checkout_intent()
                     else:
-                        self.speak_dialog('goodbye')
-                                       
+                        self.speak_dialog('goodbye')                                   
                 elif add_to_cart == 'no':
                     self.handle_want_to_buy_a_phone_intent()
             else:
@@ -86,19 +77,13 @@ class ItmProjektSmartphone(MycroftSkill):
                     self.handle_want_to_buy_a_phone_intent()
                 elif wants_alternativphone == 'no':
                     self.speak_dialog('goodbye')
-                    
-        
         else:
             self.speak_dialog('error')
-            
-
-        
 
     @intent_handler('how.much.is.the.fish.intent')
     def handle_ask_for_price_intent(self, message):
         self.speak_dialog('welcome')
         selected_phone = message.data.get('phone')
-        #debug self.speak_dialog('confirm.phone.choice', {'phone': selected_phone})
         if selected_phone is not None:
             if selected_phone == "iphone":
                 self.speak_dialog('iphone.costs', {'costs': self.cart[0][2]})
@@ -107,9 +92,7 @@ class ItmProjektSmartphone(MycroftSkill):
             elif selected_phone == "nokia":
                 self.speak_dialog('nokia.costs', {'costs': self.cart[2][2]})
             else:
-                self.speak_dialog('error')
-                
-        
+                self.speak_dialog('error')       
 
     @intent_handler('shopping.cart.intent')
     def handle_shopping_cart_intent(self):
@@ -119,8 +102,7 @@ class ItmProjektSmartphone(MycroftSkill):
         if checkout_question == 'yes':
             self.handle_checkout_intent()
         else:
-            self.speak_dialog('goodbye')
-            
+            self.speak_dialog('goodbye') 
 
     @intent_handler('delete.shopping.cart.intent')
     def handle_delete_shopping_cart_intent(self):
@@ -130,13 +112,7 @@ class ItmProjektSmartphone(MycroftSkill):
             self.cart = [["iPhones",0,999], ["Samsungs",0,699], ["Nokias",0,1]]
             self.speak_dialog('confirm.deltion')
         else:
-            self.speak_dialog('goodbye')
-            
-
-    @intent_handler('hello.there.intent')
-    def handle_hello_there_intent(self):
-        self.speak_dialog('general.kenobi')
-        
+            self.speak_dialog('goodbye')    
 
     @intent_handler('checkout.intent')
     def handle_checkout_intent(self):
@@ -154,8 +130,6 @@ class ItmProjektSmartphone(MycroftSkill):
             self.cart = [["iPhones",0,999], ["Samsungs",0,699], ["Nokias",0,1]]
         else:
             self.handle_checkout_intent()
-        
-
 
 def create_skill():
     return ItmProjektSmartphone()

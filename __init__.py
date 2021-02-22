@@ -8,7 +8,7 @@ class ItmProjektSmartphone(MycroftSkill):
         self.availableIphones = 1
         self.availableSamsungs = 2
         self.availableNokias = 3
-        self.cart = [["iPhones",0], ["Samsungs",1], ["Nokias",2]]
+        self.cart = [["iPhones",0,999], ["Samsungs",1,699], ["Nokias",2,0.99]]
 
     @intent_handler('want.to.buy.a.phone.intent')
     def handle_want_to_buy_a_phone_intent(self):
@@ -19,7 +19,7 @@ class ItmProjektSmartphone(MycroftSkill):
         if selection == "iPhone":
             if self.availableIphones > 0:
                 self.availableIphones =- 1
-                self.speak_dialog('iphone.costs')
+                self.speak_dialog('iphone.costs', {'costs': self.cart[0][2]})
                 add_to_cart = self.ask_yesno('add.to.cart.question')
                 if add_to_cart == 'yes':
                     self.cart[0][1] += 1
@@ -43,7 +43,7 @@ class ItmProjektSmartphone(MycroftSkill):
         elif selection == "Samsung":
             if self.availableSamsungs > 0:
                 self.availableSamsungs =- 1
-                self.speak_dialog('samsung.costs')
+                self.speak_dialog('samsung.costs', {'costs': self.cart[1][2])
                 add_to_cart = self.ask_yesno('add.to.cart.question')
                 if add_to_cart == 'yes':
                     self.cart[1][1] += 1
@@ -67,7 +67,7 @@ class ItmProjektSmartphone(MycroftSkill):
         elif selection == "Nokia":
             if self.availableNokias > 0:
                 self.availableNokias =- 1
-                self.speak_dialog('nokia.costs')
+                self.speak_dialog('nokia.costs', {'costs': self.cart[2][2]})
                 add_to_cart = self.ask_yesno('add.to.cart.question')
                 if add_to_cart == 'yes':
                     self.cart[2][1] += 1
@@ -101,11 +101,11 @@ class ItmProjektSmartphone(MycroftSkill):
         #debug self.speak_dialog('confirm.phone.choice', {'phone': selected_phone})
         if selected_phone is not None:
             if selected_phone == "iphone":
-                self.speak_dialog('iphone.costs')
+                self.speak_dialog('iphone.costs', {'costs': self.cart[0][2]})
             elif selected_phone == "samsung":
-                self.speak_dialog('samsung.costs')
+                self.speak_dialog('samsung.costs', {'costs': self.cart[1][2]})
             elif selected_phone == "nokia":
-                self.speak_dialog('nokia.costs')
+                self.speak_dialog('nokia.costs', {'costs': self.cart[2][2]})
             else:
                 self.speak_dialog('error')
                 self.stop
@@ -140,7 +140,7 @@ class ItmProjektSmartphone(MycroftSkill):
 
     @intent_handler('checkout.intent')
     def handle_chechout_intent(self):
-        shopping_cart_total = sum(self.cart)
+        shopping_cart_total = self.cart[0][2] + self.cart[1][2] + self.cart[2][2]
         self.speak_dialog(shopping_cart_total)
         self.stop
 

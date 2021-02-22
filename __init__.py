@@ -117,7 +117,7 @@ class ItmProjektSmartphone(MycroftSkill):
         self.speak_dialog('shopping.cart.status', {'phone1_name': self.cart[0][0], 'phone1_number': self.cart[0][1], 'phone2_name': self.cart[1][0], 'phone2_number': self.cart[1][1], 'phone3_name': self.cart[2][0], 'phone3_number': self.cart[2][1]})
         checkout_question = self.ask_yesno('chechout.question')
         if checkout_question == 'yes':
-            self.handle_chechout_intent(self.cart)
+            self.handle_chechout_intent()
         else:
             self.speak_dialog('goodbye')
             self.stop

@@ -43,7 +43,7 @@ class ItmProjektSmartphone(MycroftSkill):
         elif selection == "Samsung":
             if self.availableSamsungs > 0:
                 self.availableSamsungs =- 1
-                self.speak_dialog('samsung.costs', {'costs': self.cart[1][2])
+                self.speak_dialog('samsung.costs', {'costs': self.cart[1][2]})
                 add_to_cart = self.ask_yesno('add.to.cart.question')
                 if add_to_cart == 'yes':
                     self.cart[1][1] += 1

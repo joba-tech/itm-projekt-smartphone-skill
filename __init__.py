@@ -144,16 +144,16 @@ class ItmProjektSmartphone(MycroftSkill):
         cart_total = (self.cart[0][1] * self.cart[0][2]) + (self.cart[1][1] * self.cart[1][2]) + (self.cart[2][1] * self.cart[2][2])
         self.speak_dialog('shopping.cart.total', {'total': cart_total})
         home_street = self.get_response('what.is.your.street.address')
-        if home_street = 'stop':
+        if home_street == 'stop':
             self.stop
         home_number = self.get_response('what.is.your.house.number')
-        if home_number = 'stop':
+        if home_number == 'stop':
             self.stop
         home_zip = self.get_response('what.is.your.zip.code')
-        if home_zip = 'stop':
+        if home_zip == 'stop':
             self.stop
         home_town = self.get_response('what.is.your.hometown')
-        if home_town = 'stop':
+        if home_town == 'stop':
             self.stop
         address_check = self.ask_yesno('address.check', {'street': home_street, 'number': home_number, 'zip': home_zip, 'town': home_town})
         if address_check == 'yes':

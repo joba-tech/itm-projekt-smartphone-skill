@@ -145,7 +145,7 @@ class ItmProjektSmartphone(MycroftSkill):
         self.speak_dialog('shopping.cart.total', {'total': cart_total})
         home_street = self.get_response('what.is.your.street.address')
         if home_street == 'stop':
-            self.exit()
+            self.stop()
         home_number = self.get_response('what.is.your.house.number')
         if home_number == 'stop':
             self.stop()
@@ -165,7 +165,7 @@ class ItmProjektSmartphone(MycroftSkill):
         self.stop()
 
     def stop(self):
-        self.stop()
+        self.stop_process()
 
 
 def create_skill():

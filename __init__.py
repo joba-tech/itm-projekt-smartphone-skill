@@ -31,7 +31,7 @@ class ItmProjektSmartphone(MycroftSkill):
                     self.handle_want_to_buy_a_phone_intent()
             else:
                 wants_alternativphone = self.ask_yesno('not.available')
-                if add_to_cart == 'yes':
+                if wants_alternativphone == 'yes':
                     self.handle_want_to_buy_a_phone_intent()
                 elif wants_alternativphone == 'no':
                     self.speak_dialog('goodbye')

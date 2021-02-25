@@ -16,10 +16,10 @@ class ItmProjektSmartphone(MycroftSkill):
         selection = self.ask_selection(self.phones, 'which.phone.do.you.want')
         if selection == "iPhone":
             if self.availableIphones > 0:
-                self.availableIphones =- 1
                 self.speak_dialog('iphone.costs', {'costs': self.cart[0][2]})
                 add_to_cart = self.ask_yesno('add.to.cart.question')
                 if add_to_cart == 'yes':
+                    self.availableIphones =- 1
                     self.cart[0][1] += 1
                     self.speak_dialog('cart.entries', {'phones': self.cart[0][0], 'number': self.cart[0][1]})
                     checkout_question = self.ask_yesno('checkout.question')

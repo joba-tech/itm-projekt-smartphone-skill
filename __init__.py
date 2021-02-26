@@ -81,7 +81,7 @@ class ItmProjektSmartphone(MycroftSkill):
             self.speak_dialog('error')
         self.stop
 
-    @intent_handler('how.much.is.the.fish.intent')
+    @intent_handler('how.much.does.a.phone.cost.intent')
     def handle_ask_for_price_intent(self, message):
         self.speak_dialog('welcome')
         selected_phone = message.data.get('phone')

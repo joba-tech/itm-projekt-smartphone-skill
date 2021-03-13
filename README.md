@@ -3,6 +3,7 @@ Voice assistant skill for a smartphone shopping skill
 
 ## About
 
+This project was a POC for the subject IT Managemnt and will not be maintained any more.
 
 ## Examples
 * "Order a phone"
